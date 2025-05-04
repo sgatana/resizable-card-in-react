@@ -1,0 +1,86 @@
+.resizable-card {
+    position: relative;
+    width: 500px; /* Fixed width */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden; /* To contain content within the resizable area */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    user-select: none; /* Prevent text selection during drag */
+  }
+  
+  .card-content {
+    padding: 16px;
+    background-color: transparent;
+    height: 100%;
+    overflow: auto;
+
+    & li {
+        padding-left: 10px;
+        list-style-position: inside;
+    }
+  }
+  
+  .drag-handle {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 40px;
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 5px 5px 0 0;
+    transform: translateX(-50%);
+    cursor: row-resize; /* Indicate vertical resizing */
+  
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+  
+  .resizable-card:hover,
+  .drag-handle:hover,
+  .left-drag-handle:hover,
+  .right-drag-handle:hover {
+    border-bottom-color: #aaa; /* Subtle visual cue on hover of bottom edge */
+  }
+  
+  .right-drag-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-bottom: #aaa;
+    border-right: #aaa;
+    background-color: #aaa;
+    border-bottom-right-radius: 5px;
+    height: 10px;
+    cursor: row-resize;
+  }
+  .left-drag-handle {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 5px;
+    background-color: transparent;
+    border-bottom-left-radius: 5px;
+    transform: translateX(-50%);
+    cursor: row-resize; /* Indicate vertical resizing */
+  
+    &:hover {
+      border-left: 2px solid #aaa;
+      border-bottom: 2px solid #aaa;
+    }
+  }
+  
+  body.resizing {
+    cursor: row-resize !important; /* Optional: Change body cursor during resize */
+    user-select: none;
+  }
+  
+  /* Responsive adjustments (example) */
+  @media (max-width: 600px) {
+    .resizable-card {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  
